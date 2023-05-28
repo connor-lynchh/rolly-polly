@@ -24,13 +24,27 @@ class Intro extends Phaser.Scene {
         this.load.path = './assets/';
         this.load.image('snail','snail.png');
         this.load.image('fairy','fairy.gif');
+        this.load.image('forest','forest.png');
+        this.load.image('button','big_button.png');
         
         
     }
     
     create() {
+
+        //this.background = this.add.image(710,540,'forest');
+        //this.background.setScale(1475/background.width,1080/background.height);
+
+
         this.snail = this.add.image(game.canvas.width * 0.2, game.canvas.height * 0.8, 'snail');
         this.snail.setScale(0.5);
+
+        this.button = this.add.image(960,700,'button');
+        this.button.setScale(0.5);
+
+        this.fairy = this.add.image(game.canvas.width/2 , game.canvas.height/4  , "fairy");
+        //this.fairy.setScale(0.5);
+        
 
         this.tweens.add({
             targets: this.snail,
@@ -46,15 +60,8 @@ class Intro extends Phaser.Scene {
             duration: 10000
         });
 
-        this.title = this.add.text(game.canvas.width / 2, game.canvas.height / 2, "Roly Poly: To the End",
-        {
-            font:"60px Arial",
-            align: "center",
-            color: "#FFFFFF",
-        }).setOrigin(0.5, 0.5);
-
-        this.fairy = this.add.image(game.canvas.width/2 , game.canvas.height/4  , "fairy");
-        this.fairy.setScale(0.5);
+       // this.fairy = this.add.image(game.canvas.width/2 , game.canvas.height/4  , "fairy");
+        //this.fairy.setScale(0.5);
         
         this.tweens.add({
             targets: this.fairy,
@@ -76,7 +83,13 @@ class Intro extends Phaser.Scene {
             duration: 75
         });*/
 
-
+        this.title = this.add.text(game.canvas.width / 2, game.canvas.height / 2, "Rolly Polly: To the End",
+        {
+            font:"60px Arial",
+            align: "center",
+            color: "#FFFFFF",
+        }).setOrigin(0.5, 0.5);
+        
         this.title.setInteractive()
         .on('pointerdown', () => {
             this.cameras.main.fade(500, 0xFF,0xFF,0xFF);
