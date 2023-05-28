@@ -22,15 +22,23 @@ class Intro extends Phaser.Scene {
     }
     preload(){
         this.load.path = './assets/';
-        this.load.image = ('snail','snail.png');
-        this.load.image = ('fairy','fairy.gif');
+        this.load.image('snail','snail.png');
+        this.load.image('fairy','fairy.gif');
         
         
     }
     
     create() {
-        this.snail = this.add.image(game.canvas.width * 0.2, game.canvas.height * 0.8, "snail");
+        this.snail = this.add.image(game.canvas.width * 0.2, game.canvas.height * 0.8, 'snail');
         this.snail.setScale(0.5);
+
+        this.tweens.add({
+            targets: this.snail,
+            flipX: true,
+            x: game.canvas.width * 0.000000000000001,
+            repeat: 1,
+            duration: 1
+        });
 
         this.tweens.add({
             targets: this.snail,
@@ -38,21 +46,24 @@ class Intro extends Phaser.Scene {
             duration: 10000
         });
 
-        this.title = this.add.text(game.canvas.width / 2, game.canvas.height / 2, "ROLLY POLLY",
+        this.title = this.add.text(game.canvas.width / 2, game.canvas.height / 2, "Roly Poly: To the End",
         {
             font:"60px Arial",
             align: "center",
             color: "#FFFFFF",
         }).setOrigin(0.5, 0.5);
 
-        this.fairy = this.add.image(game.canvas.width/1.5 , game.canvas.height/1.5  , "fairy");
+        this.fairy = this.add.image(game.canvas.width/2 , game.canvas.height/4  , "fairy");
         this.fairy.setScale(0.5);
-        /*
+        
         this.tweens.add({
-            targets: this.fairy
-            y: from ,
-            yoyo: 1, 
-        });*/
+            targets: this.fairy,
+            y: game.canvas.height/4.5,
+            yoyo: true,
+            duration: 500, 
+            repeat: -1,
+
+        });
 
         // sample yoyo, repeated tween
         /*
@@ -80,8 +91,8 @@ class Victory extends Phaser.Scene{
     }
     preload(){
         this.load.path = './assets/';
-        this.load.image = ('rolly','rolly.png');
-        this.load.image = ('coin','coin.png');
+        this.load.image('rolly','rolly.png');
+        this.load.image('coin','coin.png');
     }
     create(){
         this.coin = this.add.image(960,540,'coin');
