@@ -90,7 +90,7 @@ class Intro extends Phaser.Scene {
             color: "#FFFFFF",
         }).setOrigin(0.5, 0.5);
         
-        this.title.setInteractive()
+        this.button.setInteractive()
         .on('pointerdown', () => {
             this.cameras.main.fade(500, 0xFF,0xFF,0xFF);
             this.time.delayedCall(500, () => this.scene.start('Victory'));
